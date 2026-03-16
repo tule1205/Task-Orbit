@@ -781,3 +781,52 @@ html, body {
     border: 2px dashed var(--text-primary);
     transform: scale(1.05);
 }
+
+/* ----- Responsive: different laptop/screen sizes ----- */
+@media (max-width: 1280px) {
+    .sidebar { margin-right: 12px; }
+    .details-card { margin: 16px; padding: 16px; }
+    .content-body-scroll { padding-right: 12px; }
+    .issue-modal-content { min-width: 280px; }
+}
+
+@media (max-width: 1024px) {
+    .sidebar { width: 130px; min-width: 130px; max-width: 130px; margin-right: 12px; }
+    .logo-text { padding: 24px 12px; font-size: 1.25rem; }
+    .sidebar-hint { margin: 0 8px 8px; font-size: 0.7rem; }
+    .subtask-nav li { padding: 10px 12px; font-size: 0.85rem; }
+    .details-card { margin: 12px; padding: 14px; }
+    .main-task-title { font-size: 1.4rem; }
+    .card-header { flex-wrap: wrap; gap: 8px; }
+    .status-navigation { flex-wrap: wrap; gap: 8px; padding: 10px 0; }
+    .nav-pill { padding: 8px 14px; font-size: 0.85rem; }
+    .issue-modal-content { min-width: 0; width: 90vw; max-width: 360px; }
+    .top-bar .brand strong { font-size: 0.9rem; }
+    .brand-logo { max-height: 32px; width: auto; }
+}
+
+@media (max-width: 768px) {
+    .app-container { flex-direction: column; min-height: 100vh; height: auto; }
+    .sidebar {
+        width: 100%; min-width: 100%; max-width: 100%;
+        min-height: auto; height: auto; margin-right: 0; margin-bottom: 12px;
+        flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px;
+        padding: 12px; border-right: none; border-bottom: 1px solid #ddd;
+    }
+    .logo-text { padding: 0; font-size: 1.1rem; }
+    .sidebar-hint { display: none; }
+    .subtask-nav { max-height: 120px; }
+    .subtask-nav li { padding: 10px 12px; }
+    .details-card { margin: 8px; padding: 12px; }
+    .main-task-title { font-size: 1.2rem; }
+    .card-actions { flex-wrap: wrap; }
+    .content-body-scroll { padding: 8px 0; }
+    .status-navigation { flex-wrap: wrap; gap: 6px; padding: 8px 0; }
+    .nav-pill { padding: 6px 12px; font-size: 0.8rem; }
+    .issue-modal-content {
+        width: calc(100vw - 24px); max-width: none; min-width: 0;
+        margin: 12px;
+    }
+    .top-bar .brand strong { font-size: 0.8rem; }
+    .brand-logo { max-height: 28px; width: auto; }
+}
