@@ -643,13 +643,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     document.getElementById('inProgressBtn')?.addEventListener('click', () => {
-        window.location.href = '../InProgress/inprogress.html';
+        window.location.href = '/inprogress';
     });
     document.getElementById('inReviewBtn')?.addEventListener('click', () => {
-        window.location.href = '../InReview/inreview.html';
+        window.location.href = '/inreview';
     });
     document.getElementById('doneBtn')?.addEventListener('click', () => {
-        window.location.href = '../Done/done.html';
+        window.location.href = '/done';
     });
 
     fetchTasks();

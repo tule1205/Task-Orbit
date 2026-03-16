@@ -4,5 +4,8 @@
     { "source": "/inprogress", "destination": "/InProgress/inprogress.html" },
     { "source": "/inreview", "destination": "/InReview/inreview.html" },
     { "source": "/done", "destination": "/Done/done.html" }
+  ],
+  "headers": [
+    { "source": "/(.*)", "headers": [{ "key": "X-Content-Type-Options", "value": "nosniff" }] }
   ]
 }
