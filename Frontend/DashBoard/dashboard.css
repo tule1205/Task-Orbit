@@ -362,10 +362,12 @@ body {
     gap: 10px;
     margin-bottom: 0;
     flex-shrink: 0;
+    min-width: 0;
 }
 
 #todo-input {
     flex: 1;
+    min-width: 0;
     padding: 10px 14px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -745,6 +747,9 @@ body {
 @media (max-width: 1280px) {
     .main-content { padding-right: 24px; }
     .task-card-sidebar { width: 260px; min-width: 260px; max-width: 260px; margin: 16px; }
+    .todo-input-wrapper { gap: 8px; }
+    #todo-input { padding: 8px 10px; font-size: 0.9rem; }
+    #add-todo-btn { width: 36px; height: 36px; font-size: 1.1rem; }
     .modal-content { min-width: 380px; }
     #taskModal .modal-content { width: 90vw; min-width: 0; max-width: 420px; }
 }
@@ -757,6 +762,9 @@ body {
     .add-task-btn { margin: 12px; padding: 10px; font-size: 0.9rem; }
     .main-content { padding-right: 16px; }
     .task-card-sidebar { width: 240px; min-width: 240px; max-width: 240px; margin: 12px; padding: 14px; }
+    .todo-input-wrapper { gap: 6px; }
+    #todo-input { padding: 6px 8px; font-size: 0.85rem; }
+    #add-todo-btn { width: 34px; height: 34px; font-size: 1rem; }
     .task-card { padding: 16px; }
     .modal-content { min-width: 0; width: 90vw; max-width: 400px; padding: 20px; }
     #taskModal .modal-content { max-width: 400px; }
