@@ -767,7 +767,7 @@ body {
     .app-container { flex-direction: column; min-height: 100vh; }
     .sidebar {
         width: 100%; min-width: 100%; max-width: 100%;
-        min-height: auto; height: auto;
+        height: auto;
         flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px;
         padding: 12px; border-right: none; border-bottom: 1px solid #ddd;
     }

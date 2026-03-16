@@ -809,7 +809,7 @@ html, body {
     .app-container { flex-direction: column; min-height: 100vh; height: auto; }
     .sidebar {
         width: 100%; min-width: 100%; max-width: 100%;
-        min-height: auto; height: auto; margin-right: 0; margin-bottom: 12px;
+        height: auto; margin-right: 0; margin-bottom: 12px;
         flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px;
         padding: 12px; border-right: none; border-bottom: 1px solid #ddd;
     }
