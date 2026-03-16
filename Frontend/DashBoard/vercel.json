@@ -1,8 +1,8 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/dashboard.html" },
-    { "source": "/inprogress", "destination": "/inprogress/inprogress.html" },
-    { "source": "/inreview", "destination": "/inreview.html" },
-    { "source": "/done", "destination": "/done.html" }
+    { "source": "/", "destination": "/DashBoard/dashboard.html" },
+    { "source": "/inprogress", "destination": "/InProgress/inprogress.html" },
+    { "source": "/inreview", "destination": "/InReview/inreview.html" },
+    { "source": "/done", "destination": "/Done/done.html" }
   ]
 }
