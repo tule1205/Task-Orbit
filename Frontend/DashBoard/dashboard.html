@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Orbit</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script type="module" src="dashboard.js"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <h1 class="logo-text">My Task</h1>
+            <input type="text" id="taskSearchInput" class="task-search-input" placeholder="Search tasks..." aria-label="Search tasks by title">
+            <ul class="nav-links" id="taskList"></ul>
+            <button class="add-task-btn" id="openModalBtn" type="button">+ Add Task</button>
+        </aside>
+        
+        <section class="task-card task-card-sidebar" id="sidebarTaskCard" hidden>
+            <div class="task-card-header">
+                <div class="task-header-info">
+                    <span class="timestamp" id="sideCreatedTime"></span>
+                    <span class="due-date" id="sideDueTime"></span>
+                </div>
+            </div>
+            <div class="todo-section">
+                <div class="todo-input-wrapper">
+                    <input type="text" id="todo-input" placeholder="Add a sub-task..." title="Add a sub-task" aria-label="Add a sub-task">
+                    <button type="button" id="add-todo-btn">+</button>
+                </div>
+                <ul id="todo-list" class="todo-list"></ul>
+            </div>
+        </section>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="brand">
+                    <img src="../Image/Screenshot%202026-03-14%20155039.png" alt="Task Orbit Logo" class="brand-logo">
+                    <strong>TASK ORBIT</strong>
+                </div>
+                <div class="user-info">Account</div>
+            </header>
+
+            <section class="task-card" id="mainTaskCard" hidden>
+                <div class="card-inner-layout">
+                    <div class="task-content-main">
+                        <div class="card-top-row">
+                            <div class="task-header">
+                                <span class="timestamp" id="mainCreatedTime"></span>
+                                <span class="due-date" id="mainDueTime"></span>
+                            </div>
+                            <div class="card-menu-wrap">
+                                <button type="button" class="card-menu-btn" id="cardMenuBtn" title="More options" aria-label="More options">⋯</button>
+                                <div class="card-dropdown" id="cardDropdown" role="menu" hidden>
+                                    <button type="button" class="card-dropdown-item" id="cardEditBtn" role="menuitem">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2 class="task-title" id="displayTitle"></h2>
+
+                        <nav class="tabs tabs-with-labels">
+                            <button class="tab active" type="button" id="overviewTab">Overview</button>
+                            <button class="tab" type="button" id="activityTab">Activity</button>
+                            <div class="tab-label-group">
+                                <button class="tab" id="labelTab" type="button">Label</button>
+                                <div class="task-labels label-pills" id="taskLabels"></div>
+                            </div>
+                        </nav>
+
+                        <div id="overviewPanel" class="tab-content-panel active">
+                            <p class="summary" id="summaryText"></p>
+                            <div class="description-section">
+                                <h3 class="section-label">Description</h3>
+                                <div id="todoContainer">
+                                    <p id="descriptionText"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="activityPanel" class="tab-content-panel" hidden>
+                            <div class="activity-page-list" id="activityPageList"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="status-bar">
+                <button class="status-btn active" type="button">To Do</button>
+                <button class="status-btn" type="button" id="inProgressBtn">In Progress</button>
+                <button class="status-btn" type="button" id="inReviewBtn">In Review</button>
+                <button class="status-btn" type="button" id="doneBtn">Done</button>
+            </footer>
+        </main>
+    </div>
+
+    <div id="taskModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>New Task</h2>
+                <span class="close-btn" id="closeModalBtn" role="button" tabindex="0">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="modalTitle">Title</label>
+                    <input type="text" id="modalTitle" placeholder="Enter task title" title="Task title">
+                </div>
+                <div class="input-group">
+                    <label for="modalOverview">Overview</label>
+                    <input type="text" id="modalOverview" placeholder="Brief overview" title="Task overview">
+                </div>
+                <div class="input-group">
+                    <label for="modalDescription">Description</label>
+                    <textarea id="modalDescription" rows="4" placeholder="Task description" title="Task description"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="modalDueDate">Due date</label>
+                    <input type="datetime-local" id="modalDueDate" title="Due date" aria-label="Due date">
+                </div>
+                <div class="input-group">
+                    <label for="newTaskLabelInput">Labels</label>
+                    <input type="text" id="newTaskLabelInput" placeholder="Type a label and press Enter" title="Add label" aria-label="Add label">
+                    <div class="edit-labels-pills" id="newTaskLabelsPills"></div>
+                </div>
+                <div id="newTaskError" class="modal-error" role="alert" aria-live="polite"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="status-btn btn-create-task" id="submitNewTaskBtn" type="button">Create Task</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="labelModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Label</h2>
+                <span class="close-btn" id="closeLabelModalBtn" role="button" tabindex="0">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="modalLabelName">Label name</label>
+                    <input type="text" id="modalLabelName" placeholder="e.g. design, software, analysis" title="Label name">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="status-btn btn-create-task" id="submitNewLabelBtn" type="button">Create Label</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="editTaskModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Task</h2>
+                <span class="close-btn" id="closeEditModalBtn" role="button" tabindex="0">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="editModalTitle">Title</label>
+                    <input type="text" id="editModalTitle" placeholder="Task title" title="Task title">
+                </div>
+                <div class="input-group">
+                    <label for="editModalOverview">Overview</label>
+                    <input type="text" id="editModalOverview" placeholder="Brief overview" title="Overview">
+                </div>
+                <div class="input-group">
+                    <label for="editModalDescription">Description</label>
+                    <textarea id="editModalDescription" rows="4" placeholder="Description" title="Description"></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Labels</label>
+                    <div class="edit-labels-pills" id="editModalLabelsPills"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="status-btn btn-create-task" id="submitEditTaskBtn" type="button">Save changes</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

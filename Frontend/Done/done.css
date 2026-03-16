@@ -1,0 +1,83 @@
+@import url("../InProgress/inprogress.css");
+
+/* Done page: task column (like Dashboard) */
+.sidebar .nav-links.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 0 1 auto;
+  min-height: 0;
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.sidebar .nav-links.task-list li {
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sidebar .nav-links.task-list li:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.sidebar .nav-links.task-list li.active {
+  background-color: var(--bg-main);
+  font-weight: bold;
+}
+
+.sidebar .nav-links.task-list .task-link-text {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar .sidebar-hint {
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+/* Done page card: title row + finish date + Edit / Next */
+.done-card-header {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.done-card-title-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.done-card-title-row .main-task-title {
+  margin: 0;
+}
+
+.finish-date {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: normal;
+}
+
+.done-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.sources-list {
+  margin: 0;
+}
+
+.sources-list p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
