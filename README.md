@@ -14,8 +14,6 @@ A beautiful, fully-featured Kanban-style task board where users can create tasks
 
 - **Hosting:** Designed to run on [Vercel](https://vercel.com) with the **Frontend** folder as the root. `vercel.json` defines rewrites so `/` and `/inprogress`, `/inreview`, `/done` serve the right HTML without exposing `.html` in the URL.
 
-## Advanced features (and how they work)
-
 ### 4. Local Setup Instructions
 
 - **Clone the repo:** `git clone`
