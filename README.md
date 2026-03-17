@@ -43,3 +43,14 @@ A beautiful, fully-featured Kanban-style task board where users can create tasks
 - **No automated tests:** There are no unit or E2E tests. We’d add tests for critical paths (create task, move sub-task, send chat message, file upload) and basic accessibility checks.
 - **Anonymous-only auth:** The app uses `signInAnonymously()` so anyone can use it without an account. We’d add optional email/password or OAuth so users can have a stable identity, sync across devices, and (if desired) restrict access.
 - **Error and offline handling:** Errors are mostly surfaced via `console.error` or `alert`. We’d add user-facing toasts or inline messages and, if needed, retry/offline handling for Supabase calls.
+
+### 7. How to use Task Orbit
+
+1. **Open the app** — Start on the **Dashboard** (To Do). You’ll see a sidebar with **My Task**, a search box, and an **+ Add Task** button.
+2. **Create a task** — Click **+ Add Task**, fill in title, overview, description, due date, and optional labels, then click **Create Task**.
+3. **Work with a task** — Click a task in the sidebar. The main card shows its details. In the sidebar card, use **Add a sub-task...** and the **+** button to add sub-tasks. Use the status buttons at the bottom (**In Progress**, **In Review**, **Done**) or **drag a sub-task** onto a status button to move it to that stage.
+4. **Move between stages** — Use the footer links (**To Do**, **In Progress**, **In Review**, **Done**) to open each board. On **In Progress**, **In Review**, and **Done** you’ll see sub-tasks in that stage; select one to see its description, **Activity**, **Chat**, and **Add files**. You can drag sub-tasks onto the footer pills to change their status.
+5. **Search** — On the Dashboard, type in the **Search task...** field to filter the task list by title.
+6. **Labels** — When creating or editing a task, type a label name and press Enter to add it. Labels appear as colored pills on the task card.
+7. **Activity & chat** — On In Progress / In Review / Done, select a sub-task to see its **Activity** timeline (files added, issues created, status changes) and **Chat**. Use the chat input to send messages; they’re stored per sub-task.
+8. **Files & issues** — From the sub-task card menu (**⋯**), use **Add files** to upload attachments or **Create issue** to log an issue; both appear in the Activity feed.
