@@ -1,6 +1,6 @@
 A beautiful, fully-featured Kanban-style task board where users can create tasks, drag them across board sections, and manage work visually.
 
-## Solution overview & design decisions
+### 1. Solution overview & design decisions
 
 - **Architecture:** Static frontend (HTML, CSS, JavaScript) with no build step. Backend is [Supabase](https://supabase.com) (Postgres + Auth + Storage), called directly from the browser via the Supabase JS client. This keeps the stack simple and deployable as a static site.
 
@@ -14,7 +14,10 @@ A beautiful, fully-featured Kanban-style task board where users can create tasks
 
 - **Hosting:** Designed to run on [Vercel](https://vercel.com) with the **Frontend** folder as the root. `vercel.json` defines rewrites so `/` and `/inprogress`, `/inreview`, `/done` serve the right HTML without exposing `.html` in the URL.
 
-### 4. Local Setup Instructions
+### 2. Link to live app
+Live app: https://task-orbit-tau.vercel.app/
+
+### 3. Local Setup Instructions
 
 - **Clone the repo:** `git clone`
 - **Run locally:**
@@ -22,7 +25,7 @@ A beautiful, fully-featured Kanban-style task board where users can create tasks
   - Go to “Frontend/DashBoard/dashboard.html” 
   - Open with Live Server
 
-### 5. Advanced Features
+### 4. Advanced Features
 
 - **File uploads:** In Progress, In Review, and Done pages support “Add files” per sub-task. Files are uploaded to Supabase Storage (e.g. `task-files` bucket), public URLs are stored in `task_files`, and an activity row is inserted so the feed shows “added this file” with a link to the file.
 - **Activity feed:** Every meaningful action (file added and issue created) is written to an `activities` table with `subtask_id`, `action`, `details`, optional `link_url` and `issue_description`. The UI shows a chronological list so users can see what happened on a sub-task.
@@ -33,7 +36,7 @@ A beautiful, fully-featured Kanban-style task board where users can create tasks
 - **Responsive layout:** CSS media queries at **1280px**, **1024px**, and **768px** adjust sidebar width, card sizes, and modal widths; at 768px the sidebar becomes a horizontal bar so the app works on smaller laptops.
 - **Basic XSS mitigation:** User-generated text (titles, descriptions, activity details, chat messages) is escaped with an `escapeHtml` helper before being inserted into the DOM to reduce risk of script injection.
 
-### 6. Tradeoffs & Future Improvements
+### 5. Tradeoffs & Future Improvements
 
 - **No real-time updates:** Data is fetched on load and after mutations; there are no Supabase real-time subscriptions. With more time we’d add `channel().on('postgres_changes', ...)` for tasks, `sub_tasks`, and `chat_messages` so multiple tabs or users see changes immediately.
 - **Supabase URL/key in frontend:** The Supabase project URL and anon key are in the JS files. The anon key is intended to be public and is restricted by Row Level Security (RLS), but the project is tied to one backend. With more time we’d move config into environment variables and inject them at build time or via a small config endpoint.
@@ -42,7 +45,7 @@ A beautiful, fully-featured Kanban-style task board where users can create tasks
 - **Anonymous-only auth:** The app uses `signInAnonymously()` so anyone can use it without an account. We’d add optional email/password or OAuth so users can have a stable identity, sync across devices, and (if desired) restrict access.
 - **Error and offline handling:** Errors are mostly surfaced via `console.error` or `alert`. We’d add user-facing toasts or inline messages and, if needed, retry/offline handling for Supabase calls.
 
-### 7. How to use Task Orbit
+### 6. How to use Task Orbit
 
 1. **Open the app** — Start on the **Dashboard** (To Do). You’ll see a sidebar with **My Task**, a search box, and an **+ Add Task** button.
 2. **Create a task** — Click **+ Add Task**, fill in title, overview, description, due date, and optional labels, then click **Create Task**.
